@@ -1,3 +1,96 @@
 body {
     margin: 0;
+    height: 100vh;
+}
+
+.main-container {
+    margin: auto;
+    margin-top: 10vh;
+    width: 75%;
+    height: 75%;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    /* text-align: center; */
+    background-color: #1f2937;
+}
+
+@font-face {
+    font-family: karla;
+    src: url(KarlaEb.ttf);
+}
+
+@font-face {
+    font-family: inter;
+    src: url(Inter.ttf);
+}
+
+.primary-heading {
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+    font-family: karla;
+    font-size: 44px;
+    color: white;
+}
+
+#highlight {
+    color: #4adf86;
+}
+
+.tagline {
+    margin-top: 2vh;
+    font-family: inter;
+    font-size: 22px;
+    color: #d5d4d8;
+}
+
+.button-container {
+    margin-top: 10vh;
+}
+
+.btn {
+    font-family: inter;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    background-color: #10b981;
+    box-shadow: 1px 4px #064e3b;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #059669;
+}
+
+.line {
+    width: 100%;
+    background-color: #2f3e53;
+    height: 2px;
+    border: none;
+    margin-left: 0px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.password-container {
+    width: 40%;
+    height: 40px;
+    background-color: #273549;
+    color: #55f991;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    padding: 0px 5px 12px 5px;
+    font-family: inter;
+    font-weight: 350;
+    font-size: 18px;
 }
