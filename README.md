@@ -4,7 +4,7 @@ Welcome to the **Password Generator**! This project is a sleek, user-friendly to
 
 ## 🌐 Live Demo
 
-Check out the live demo of the project deployed on Netlify: [Password Generator](your-netlify-link)
+Check out the live demo of the project deployed on Netlify: [Password Generator](https://securepassgenrator.netlify.app/)
 
 ## ✨ Features
 
@@ -16,7 +16,8 @@ Check out the live demo of the project deployed on Netlify: [Password Generator]
 ## 📸 Screenshots
 
 ### Desktop View
-![Desktop View](path-to-desktop-screenshot)
+![Desktop View](/Desktop_Website_Image_Before.png)
+![Desktop View](/Desktop_Website_Image_After.png)
 
 <!-- ### Mobile View
 ![Mobile View](path-to-mobile-screenshot) -->
