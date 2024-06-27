@@ -25,6 +25,11 @@ body {
     src: url(Inter.ttf);
 }
 
+@font-face {
+    font-family: rubik;
+    src: url(Rubik.ttf);
+}
+
 .primary-heading {
     margin-top: 5vh;
     margin-bottom: 1vh;
@@ -93,4 +98,34 @@ body {
     font-family: inter;
     font-weight: 350;
     font-size: 18px;
+}
+
+.input-container {
+    margin-top: 5vh;
+}
+
+.labels {
+    font-family: inter;
+    font-size: 16px;
+    color: white;
+}
+
+#password-length {
+    width: 10vh;
+    height: 3vh;
+    margin-left: 1vh;
+    border: none;
+    border-radius: 6px;
+    font-family: inter;
+    background-color: #273549;
+    color: #55f991;
+    text-align: center;
+}
+
+.warning {
+    font-family: rubik;
+    font-size: 16px;
+    color: #fb7185;
+    margin-top: 3vh;
+    text-align: center;
 }

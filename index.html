@@ -10,6 +10,10 @@
     <div class="main-container">
         <h1 class="primary-heading">Generate a<br><span id="highlight">random password</span></h1>
         <p class = "tagline">Never use an insecure password again.</p>
+        <div class="input-container">
+            <label for="password-length" class="labels">Password Length (min 7 and max 20): </label>
+            <input type="number" id="password-length" min="7" max="20">
+        </div>
         <div class="button-container">
             <button id="generate-password" class="btn">Generate Passwords</button>
         </div>
@@ -22,6 +26,7 @@
                 <p id="password2"></p>
             </div>
         </div>
+        <p class="warning"></p>
     </div>
     <script src="index.js"></script>
 </body>

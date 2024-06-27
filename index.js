@@ -95,7 +95,7 @@ const characters = [
 let generatePasswordButton = document.getElementById("generate-password");
 let password1El = document.querySelector("#password1");
 let password2El = document.getElementById("password2");
-let requiredPasswordLength = 15;
+let warningEl = document.querySelector(".warning");
 
 function getRandomChar() {
     let randomIndex = Math.floor(Math.random() * characters.length);
@@ -104,18 +104,36 @@ function getRandomChar() {
     return randomChar;
 }
 
+function checkPasswordLength() {
+    let passwordLengthEl = document.getElementById("password-length");
+    let passwordLength = parseInt(passwordLengthEl.value);
+
+    return passwordLength;
+}
+
 generatePasswordButton.addEventListener("click", function () {
-    let password1 = "";
-    let password2 = "";
+    let requiredPasswordLength = checkPasswordLength();
+    if (isNaN(requiredPasswordLength) || requiredPasswordLength < 7) {
+        warningEl.textContent =
+            "Password Length should be minimum 7 characters long";
+    } else if (requiredPasswordLength > 20) {
+        warningEl.textContent =
+            "Password Length should be maximum 20 characters long";
+    } else {
+        warningEl.textContent = "";
 
-    for (let i = 1; i <= requiredPasswordLength; i++) {
-        password1 += getRandomChar();
+        let password1 = "";
+        let password2 = "";
+
+        for (let i = 1; i <= requiredPasswordLength; i++) {
+            password1 += getRandomChar();
+        }
+
+        for (let i = 1; i <= requiredPasswordLength; i++) {
+            password2 += getRandomChar();
+        }
+
+        password1El.textContent = password1;
+        password2El.textContent = password2;
     }
-
-    for (let i = 1; i <= requiredPasswordLength; i++) {
-        password2 += getRandomChar();
-    }
-
-    password1El.textContent = password1;
-    password2El.textContent = password2;
 });
