@@ -116,9 +116,13 @@ generatePasswordButton.addEventListener("click", function () {
     if (isNaN(requiredPasswordLength) || requiredPasswordLength < 7) {
         warningEl.textContent =
             "Password Length should be minimum 7 characters long";
+        password1El.textContent = "";
+        password2El.textContent = "";
     } else if (requiredPasswordLength > 20) {
         warningEl.textContent =
             "Password Length should be maximum 20 characters long";
+        password1El.textContent = "";
+        password2El.textContent = "";
     } else {
         warningEl.textContent = "";
 
