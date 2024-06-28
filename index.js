@@ -141,3 +141,53 @@ generatePasswordButton.addEventListener("click", function () {
         password2El.textContent = password2;
     }
 });
+
+function isPasswordLengthOk(passwordLength) {
+    if (
+        isNaN(passwordLength) === false &&
+        passwordLength >= 7 &&
+        passwordLength <= 20
+    ) {
+        return true;
+    }
+
+    return false;
+}
+
+password1El.addEventListener("click", function () {
+    let passwordLength = checkPasswordLength();
+
+    if (isPasswordLengthOk(passwordLength)) {
+        let generatedPassword = password1El.textContent;
+
+        navigator.clipboard
+            .writeText(generatedPassword)
+            .then(function () {
+                alert("Password1 Copied To Clipboard!!");
+            })
+            .catch(function (error) {
+                console.error("Error copying text: ", error);
+            });
+    } else {
+        password1El.classList.remove("text-to-copy");
+    }
+});
+
+password2El.addEventListener("click", function () {
+    let passwordLength = checkPasswordLength();
+
+    if (isPasswordLengthOk(passwordLength)) {
+        let generatedPassword = password2El.textContent;
+
+        navigator.clipboard
+            .writeText(generatedPassword)
+            .then(function () {
+                alert("Password2 Copied To Clipboard!!");
+            })
+            .catch(function (error) {
+                console.error("Error copying text: ", error);
+            });
+    } else {
+        password2El.classList.remove("text-to-copy");
+    }
+});
