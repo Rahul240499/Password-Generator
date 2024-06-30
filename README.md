@@ -10,8 +10,8 @@ Check out the live demo of the project deployed on Netlify: [Password Generator]
 
 - **Password Length Customization**: Easily set the desired length of your password.
 - **Copy to Clipboard**: Copy the generated password to your clipboard with a single click.
-- **Toggle Symbols & Numbers**: Choose whether to include symbols and numbers in your password.
-- **Responsive Design**: Enjoy a seamless experience on both desktop and mobile devices.
+- **Character Type Selection**: Generate passwords based on user-selected character types, including Uppercase, Lowercase, Numbers, and Symbols.
+- **Responsive Design**: Enjoy a seamless experience on desktop & tablets.
 
 ## 📸 Screenshots
 

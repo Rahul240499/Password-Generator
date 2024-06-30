@@ -263,12 +263,8 @@ generatePasswordButton.addEventListener("click", function () {
             let password1 = "";
             let password2 = "";
 
-            console.log(characters);
             password1 = makePassword(requiredPasswordLength);
-            console.log(characters);
             password2 = makePassword(requiredPasswordLength);
-            console.log(characters);
-            console.log();
 
             password1El.textContent = password1;
             password2El.textContent = password2;
