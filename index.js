@@ -1,4 +1,6 @@
-const characters = [
+let characters = [];
+
+const uppercaseChar = [
     "A",
     "B",
     "C",
@@ -25,6 +27,9 @@ const characters = [
     "X",
     "Y",
     "Z",
+];
+
+const lowercaseChar = [
     "a",
     "b",
     "c",
@@ -51,16 +56,11 @@ const characters = [
     "x",
     "y",
     "z",
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
+];
+
+const numberChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+const symbolChar = [
     "~",
     "`",
     "!",
@@ -97,9 +97,65 @@ let password1El = document.querySelector("#password1");
 let password2El = document.getElementById("password2");
 let warningEl = document.querySelector(".warning");
 
-function getRandomChar() {
-    let randomIndex = Math.floor(Math.random() * characters.length);
-    let randomChar = characters[randomIndex];
+let uppercaseCheckbox = document.getElementById("uppercase");
+let lowercaseCheckbox = document.getElementById("lowercase");
+let numbersCheckbox = document.getElementById("numbers");
+let symbolsCheckbox = document.getElementById("symbols");
+
+let checkboxPreference = {
+    uppercase: false,
+    lowercase: false,
+    numbers: false,
+    symbols: false,
+};
+
+function atLeastOneChecked() {
+    let checkboxes = document.querySelectorAll('input[name="characterType"]');
+    let isChecked = false;
+
+    checkboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+            isChecked = true;
+        }
+    });
+
+    if (isChecked) {
+        return true;
+    }
+
+    return false;
+}
+
+// Knuth Shuffle Algorithm
+function shuffleString(str) {
+    let characterArr = str.split("");
+    let n = characterArr.length;
+
+    for (let i = n - 1; i >= 1; i--) {
+        let randomIndex = Math.floor(Math.random() * (i + 1));
+        [characterArr[i], characterArr[randomIndex]] = [
+            characterArr[randomIndex],
+            characterArr[i],
+        ];
+    }
+
+    return characterArr.join("");
+}
+
+function shuffleArray(arr) {
+    let n = arr.length;
+
+    for (let i = n - 1; i >= 1; i--) {
+        let randomIndex = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]];
+    }
+
+    return arr;
+}
+
+function getRandomChar(arr) {
+    let randomIndex = Math.floor(Math.random() * arr.length);
+    let randomChar = arr[randomIndex];
 
     return randomChar;
 }
@@ -111,34 +167,115 @@ function checkPasswordLength() {
     return passwordLength;
 }
 
+function makePassword(requiredPasswordLength) {
+    let passwd = "";
+
+    let currentCheckboxPreference = {
+        uppercase: false,
+        lowercase: false,
+        numbers: false,
+        symbols: false,
+    };
+
+    if (uppercaseCheckbox.checked) {
+        currentCheckboxPreference.uppercase = true;
+        passwd += getRandomChar(uppercaseChar);
+    }
+
+    if (lowercaseCheckbox.checked) {
+        currentCheckboxPreference.lowercase = true;
+        passwd += getRandomChar(lowercaseChar);
+    }
+
+    if (numbersCheckbox.checked) {
+        currentCheckboxPreference.numbers = true;
+        passwd += getRandomChar(numberChar);
+    }
+
+    if (symbolsCheckbox.checked) {
+        currentCheckboxPreference.symbols = true;
+        passwd += getRandomChar(symbolChar);
+    }
+
+    if (
+        currentCheckboxPreference.uppercase !== checkboxPreference.uppercase ||
+        currentCheckboxPreference.lowercase !== checkboxPreference.lowercase ||
+        currentCheckboxPreference.numbers !== checkboxPreference.numbers ||
+        currentCheckboxPreference.symbols !== checkboxPreference.symbols
+    ) {
+        checkboxPreference = currentCheckboxPreference;
+        characters = [];
+
+        if (checkboxPreference.uppercase) {
+            for (let i = 0; i < uppercaseChar.length; i++) {
+                characters.push(uppercaseChar[i]);
+            }
+        }
+
+        if (checkboxPreference.lowercase) {
+            for (let i = 0; i < lowercaseChar.length; i++) {
+                characters.push(lowercaseChar[i]);
+            }
+        }
+
+        if (checkboxPreference.numbers) {
+            for (let i = 0; i < numberChar.length; i++) {
+                characters.push(numberChar[i]);
+            }
+        }
+
+        if (checkboxPreference.symbols) {
+            for (let i = 0; i < symbolChar.length; i++) {
+                characters.push(symbolChar[i]);
+            }
+        }
+
+        characters = shuffleArray(characters);
+    }
+
+    let remainingPasswordLength = requiredPasswordLength - passwd.length;
+
+    for (let i = 1; i <= remainingPasswordLength; i++) {
+        passwd += getRandomChar(characters);
+    }
+
+    passwd = shuffleString(passwd);
+
+    return passwd;
+}
+
 generatePasswordButton.addEventListener("click", function () {
-    let requiredPasswordLength = checkPasswordLength();
-    if (isNaN(requiredPasswordLength) || requiredPasswordLength < 7) {
-        warningEl.textContent =
-            "Password Length should be minimum 7 characters long";
-        password1El.textContent = "";
-        password2El.textContent = "";
-    } else if (requiredPasswordLength > 20) {
-        warningEl.textContent =
-            "Password Length should be maximum 20 characters long";
-        password1El.textContent = "";
-        password2El.textContent = "";
+    if (atLeastOneChecked()) {
+        let requiredPasswordLength = checkPasswordLength();
+        if (isNaN(requiredPasswordLength) || requiredPasswordLength < 7) {
+            warningEl.textContent =
+                "Password Length should be minimum 7 characters long";
+            password1El.textContent = "";
+            password2El.textContent = "";
+        } else if (requiredPasswordLength > 20) {
+            warningEl.textContent =
+                "Password Length should be maximum 20 characters long";
+            password1El.textContent = "";
+            password2El.textContent = "";
+        } else {
+            warningEl.textContent = "";
+
+            let password1 = "";
+            let password2 = "";
+
+            console.log(characters);
+            password1 = makePassword(requiredPasswordLength);
+            console.log(characters);
+            password2 = makePassword(requiredPasswordLength);
+            console.log(characters);
+            console.log();
+
+            password1El.textContent = password1;
+            password2El.textContent = password2;
+        }
     } else {
-        warningEl.textContent = "";
-
-        let password1 = "";
-        let password2 = "";
-
-        for (let i = 1; i <= requiredPasswordLength; i++) {
-            password1 += getRandomChar();
-        }
-
-        for (let i = 1; i <= requiredPasswordLength; i++) {
-            password2 += getRandomChar();
-        }
-
-        password1El.textContent = password1;
-        password2El.textContent = password2;
+        warningEl.textContent =
+            "At least select one of the character type for your password!";
     }
 });
 

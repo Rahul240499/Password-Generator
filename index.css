@@ -50,7 +50,7 @@ body {
 }
 
 .button-container {
-    margin-top: 10vh;
+    margin-top: 6vh;
 }
 
 .btn {
@@ -132,4 +132,19 @@ body {
 
 .text-to-copy {
     cursor: pointer;
+}
+
+.checkbox-container {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+input[name="characterType"] {
+    width: 2vh;
+    height: 2vh;
+    border: none;
+    border-radius: 6px;
+    accent-color: #273549;
 }

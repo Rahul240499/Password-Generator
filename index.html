@@ -14,6 +14,24 @@
             <label for="password-length" class="labels">Password Length (min 7 and max 20): </label>
             <input type="number" id="password-length" min="7" max="20">
         </div>
+        <div class="checkbox-container">
+            <div class="the-checkbox">
+                <input type="checkbox" id="uppercase" class="character-checkboxes" name="characterType" value="uppercase">
+                <label for="uppercase" class="labels">Uppercase</label>
+            </div>
+            <div class="the-checkbox">
+                <input type="checkbox" id="lowercase" class="character-checkboxes" name="characterType" value="lowercase">
+                <label for="lowercase" class="labels">Lowercase</label>
+            </div>
+            <div class="the-checkbox">
+                <input type="checkbox" id="numbers" class="character-checkboxes" name="characterType" value="numbers">
+                <label for="numbers" class="labels">Numbers</label>
+            </div>
+            <div class="the-checkbox">
+                <input type="checkbox" id="symbols" class="character-checkboxes" name="characterType" value="symbols">
+                <label for="symbols" class="labels">Symbols</label>
+            </div>
+        </div>
         <div class="button-container">
             <button id="generate-password" class="btn">Generate Passwords</button>
         </div>
